@@ -11,6 +11,11 @@
                     "Tentang JSM")
             ?>
         </li>
+        <li><?=
+            anchor("admin/galeri", img("asset/template_admin/img/icons/packs/fugue/16x16/table.png") .
+                    "Galeri")
+            ?>
+        </li>
         <li>
             <?=
             anchor("", img("asset/template_admin/img/icons/packs/fugue/16x16/clipboard-list.png") .

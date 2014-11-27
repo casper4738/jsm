@@ -1,4 +1,5 @@
 <?php
+
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
@@ -49,36 +50,13 @@ class admin extends CI_Controller {
         $this->load->view('admin/footer');
     }
 
-//    public function korbid($string = "music") {
-//        $this->load->model('korbid_model');
-//        $data['title'] = "Kordinator Bidang";
-//        $this->load->view('admin/header', $data);
-//        if ($string == "music") {
-//            $model['jenis'] = "Music";
-//            $model['par'] = "music";
-//            $model['list'] = $this->korbid_model->get_list("music");
-//            $this->load->view('admin/korbid_content', $model);
-//        } else if ($string == "choir") {
-//            $model['jenis'] = "Choir";
-//            $model['par'] = "choir";
-//            $model['list'] = $this->korbid_model->get_list("choir");
-//            $this->load->view('admin/korbid_content', $model);
-//        } else if ($string == "multimedia") {
-//            $model['jenis'] = "Multimedia";
-//            $model['par'] = "multimedia";
-//            $model['list'] = $this->korbid_model->get_list("multimedia");
-//            $this->load->view('admin/korbid_content', $model);
-//        }
-//        $this->load->view('admin/footer');
-//    }
-    
-     public function korbid($string = "music") {
+    public function korbid($string = "music") {
         $this->load->model('korbid_model');
         $data['title'] = "Korbid";
-        
+
         $model['korbid'] = $this->korbid_model->get_detail($string)->row();
         $model['id'] = $string;
-        
+
         $this->load->view('admin/header', $data);
         $this->load->view('admin/korbid_content', $model);
         $this->load->view('admin/about_footer');
@@ -93,6 +71,16 @@ class admin extends CI_Controller {
         $model['par3'] = $string;
         $model['list'] = $this->sel_model->get_list($string);
         $this->load->view('admin/sel_content', $model);
+        $this->load->view('admin/footer');
+    }
+    
+    public function galeri() {
+        $this->load->model('galeri_model');
+        $data['title'] = "Galeri";
+        $model['list'] = $this->galeri_model->get_list();
+        $model['error'] = "";
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/galeri_content', $model);
         $this->load->view('admin/footer');
     }
 

@@ -25,12 +25,12 @@ class storage {
         return $str;
     }
 
-    public function init_pagination($base_url, $total_rows) {
+    public function init_pagination($base_url, $per_page, $total_rows) {
         $config['base_url'] = base_url() . $base_url;
         $config['total_rows'] = $total_rows;
         $config['uri_segment'] = 3;
         $config['num_links'] = 3;
-        $config['per_page'] = 5;
+        $config['per_page'] = $per_page;
         $config['full_tag_open'] = '<div id="pagination">';
         $config['full_tag_close'] = '</div>';
         return $config;

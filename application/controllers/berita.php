@@ -32,7 +32,7 @@ class berita extends CI_Controller {
         $model['list'] = $list;
 
         $this->load->library('pagination');
-        $config = $this->storage->init_pagination("berita/page/", $this->berita_model->get_count_berita());
+        $config = $this->storage->init_pagination("berita/page/", 5, $this->berita_model->get_count_berita());
         $this->pagination->initialize($config);
 
         $this->load->view('news_header', $data);
@@ -58,7 +58,7 @@ class berita extends CI_Controller {
         $model['list'] = $list;
 
         $this->load->library('pagination');
-        $config = $this->storage->init_pagination("berita/page/", $this->berita_model->get_count_berita());
+        $config = $this->storage->init_pagination("berita/page/", 5, $this->berita_model->get_count_berita());
         $this->pagination->initialize($config);
 
         $this->load->view('news_header', $data);

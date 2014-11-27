@@ -10,8 +10,8 @@
         <div class="container_12">
 
             <div class="grid_6">
-                <h1>Kategori</h1>
-                <p>Berisi kategori / jenis  dari berita / artikel</p>
+                <h1>Galeri</h1>
+                <p>Berisi foto, dokumentasi JSM</p>
             </div>
 
 
@@ -19,7 +19,7 @@
                 <ul class="shortcut-list" style="float: right">
                     <li>
                         <?=
-                        anchor("kategori/add", img("asset/template_admin/img/icons/packs/crystal/48x48/apps/kate.png", TRUE) . " Tambah Data "
+                        anchor("galeri/add", img("asset/template_admin/img/icons/packs/crystal/48x48/apps/kate.png", TRUE) . " Tambah Data "
                         )
                         ?>
                     </li>
@@ -36,8 +36,10 @@
                             <thead>
                                 <tr>
                                     <th width="50">NO</th>
-                                    <th>Nama Kategori</th>
-                                    <th width="70"></th>
+                                    <th>JUDUL FOTO</th>
+                                    <th>KETERANGAN</th>
+                                    <th>TANGGAL FOTO</th>
+                                    <th width="200"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,9 +49,12 @@
                                     ?>
                                     <tr>
                                         <td style="text-align: center"><?= $index ?></td>
-                                        <td><?= $row->nama_kategori ?></td>
-                                        <td><?= anchor("kategori/edit/$row->id_kategori", "EDIT") ?> | 
-                                            <?= anchor("kategori/delete/$row->id_kategori", "HAPUS") ?>
+                                        <td><?= $row->judul_foto ?></td>
+                                        <td><?= $row->keterangan ?></td>
+                                        <td><?= $row->tanggal_foto ?></td>
+                                        <td style="text-align: center"><?= anchor_popup("galeri/foto/$row->id_galeri", "LIHAT FOTO") ?> | 
+                                            <?= anchor("galeri/edit/$row->id_galeri", "EDIT") ?> | 
+                                            <?= anchor("galeri/delete/$row->id_galeri", "HAPUS") ?>
                                         </td>
                                     </tr>
                                     <?php

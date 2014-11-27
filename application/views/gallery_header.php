@@ -7,7 +7,8 @@
         $list = array(
             array('rel' => 'stylesheet', 'type' => 'text/css', 'media' => 'screen', 'href' => 'asset/template1/css/reset.css'),
             array('rel' => 'stylesheet', 'type' => 'text/css', 'media' => 'screen', 'href' => 'asset/template1/css/style.css'),
-            array('rel' => 'stylesheet', 'type' => 'text/css', 'media' => 'screen', 'href' => 'asset/template1/css/layout.css')
+            array('rel' => 'stylesheet', 'type' => 'text/css', 'media' => 'screen', 'href' => 'asset/template1/css/layout.css'),
+            array('rel' => 'stylesheet', 'type' => 'text/css', 'media' => 'screen', 'href' => 'asset/template1/css/pagination.css'),
         );
 
         foreach ($list as $value) {

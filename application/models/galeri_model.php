@@ -12,28 +12,50 @@
  */
 class galeri_model extends CI_Model {
     
-    function get_album() {
-        $this->db->select('*');
-        $this->db->from('album');
+    function get_galeri($val1) {
+       $this->db->select('*');
+        $this->db->from('galeri');
+        $this->db->order_by("tanggal_post", "desc");
+        $this->db->limit(12, $val1);
         return $this->db->get();
     }
-
-    function get_galeri($val1, $val2) {
+    
+    
+    function get_count() {
+        $this->db->select('count(id_galeri) as id');
+        $this->db->from('galeri');
+        return $this->db->get();
+    }
+    
+    function get_list() {
         $this->db->select('*');
         $this->db->from('galeri');
-        $this->db->join('foto', 'galeri.id_foto = foto.id_foto');
-        $this->db->join('album', 'galeri.id_album = album.id_album');
-        $this->db->where('album.id_album', $val1);
-        $this->db->order_by("foto.tanggal_post", "desc"); 
-        $this->db->limit(9, $val2);
+        $this->db->order_by("tanggal_post", "desc");
         return $this->db->get();
     }
-
-    function get_num_rows() {
+    
+    function get_detail($id) {
         $this->db->select('*');
         $this->db->from('galeri');
-        $this->db->join('foto', 'galeri.id_foto = foto.id_foto');
+        $this->db->where("id_galeri", $id);
         return $this->db->get();
     }
 
+    function get_id() {
+        return $this->db->query("SELECT MAX(id_galeri)+1 AS id FROM galeri WHERE id_galeri LIKE '" . date("Ym") . "%' LIMIT 1 ");
+    }
+    
+     function insert($data) {
+        $this->db->insert('galeri', $data);
+    }
+
+    function update($data, $id) {
+        $this->db->where('id_galeri', $id);
+        $this->db->update('galeri', $data);
+    }
+
+    function delete($id) {
+        $this->db->delete('galeri', array('id_galeri' => $id));
+    }
+    
 }

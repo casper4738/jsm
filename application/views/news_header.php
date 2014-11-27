@@ -15,12 +15,10 @@
             echo link_tag($value);
         }
         ?>
-        
         <script src="<?= base_url(); ?>asset/template1/js/jquery.min.js" type="text/javascript"></script>
         <script src="<?= base_url(); ?>asset/template1/js/jquery.dropotron.min.js" type="text/javascript"></script>
         <script src="<?= base_url(); ?>asset/template1/js/skel.min.js" type="text/javascript"></script>
         <script src="<?= base_url(); ?>asset/template1/js/init.js" type="text/javascript"></script>
-        
         <script src="<?= base_url(); ?>asset/template1/js/jquery-1.6.3.min.js" type="text/javascript"></script>
         <script src="<?= base_url(); ?>asset/template1/js/cufon-yui.js" type="text/javascript"></script>
         <script src="<?= base_url(); ?>asset/template1/js/cufon-replace.js" type="text/javascript"></script>
