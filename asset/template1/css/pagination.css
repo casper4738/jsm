@@ -1,0 +1,19 @@
+#pagination a, #pagination strong {
+     display:inline-block;
+    padding:0 24px;
+    margin-left:2px;
+    margin-bottom:2px;
+    font-size:14px;
+    line-height:38px;
+    color:#000;
+    border:1px solid #fff;
+    background:url(../images/button-tail.gif) 0 0 repeat-x #f2f2f2;
+    box-shadow:0 0 2px #bbb;
+    cursor:pointer;
+}
+
+#pagination a:focus {background:#60b001;color:#fff}
+
+#pagination a:hover {background:#60b001;color:#fff}
+
+#pagination a {text-decoration:none}
