@@ -12,10 +12,18 @@
  */
 class event_model extends CI_Model {
 
+    function get_last() {
+        $this->db->select('*');
+        $this->db->from('event');
+        $this->db->order_by("tanggal_event", "desc");
+        $this->db->limit(9);
+        return $this->db->get();
+    }
+    
     function get_list() {
         $this->db->select('*');
         $this->db->from('event');
-        $this->db->order_by("judul_event", "asc");
+        $this->db->order_by("tanggal_event", "desc");
         return $this->db->get();
     }
 

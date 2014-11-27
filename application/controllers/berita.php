@@ -9,14 +9,27 @@ class berita extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('berita_model');
+        $this->load->model('event_model');
         $this->load->library('storage');
     }
 
     public function index() {
         $data['title'] = "Berita & Event";
         $model['list_berita'] = $this->berita_model->get_last_berita();
-        $model['list_kategori'] = $this->berita_model->get_list_kategori();
-        $model['list'] = $this->berita_model->get_berita(0);
+        $model['list_event'] = $this->event_model->get_last();
+
+        $list = array();
+        foreach ($this->berita_model->get_berita(0)->result() as $row) {
+            $listx = new stdClass();
+            $listx->id = $row->id_berita;
+            $listx->judul = $row->judul_berita;
+            $listx->isi = $row->isi_berita;
+            $listx->tanggal = $row->tanggal_post;
+            $listx->kategori = $row->nama_kategori;
+            $listx->jenis = "berita";
+            $list[] = $listx;
+        }
+        $model['list'] = $list;
 
         $this->load->library('pagination');
         $config = $this->storage->init_pagination("berita/page/", $this->berita_model->get_count_berita());
@@ -30,8 +43,19 @@ class berita extends CI_Controller {
     public function page($val1 = 0) {
         $data['title'] = "Berita & Event";
         $model['list_berita'] = $this->berita_model->get_last_berita();
-        $model['list_kategori'] = $this->berita_model->get_list_kategori();
-        $model['list'] = $this->berita_model->get_berita($val1);
+        $model['list_event'] = $this->event_model->get_last();
+        $list = array();
+        foreach ($this->berita_model->get_berita($val1)->result() as $row) {
+            $listx = new stdClass();
+            $listx->id = $row->id_berita;
+            $listx->judul = $row->judul_berita;
+            $listx->isi = $row->isi_berita;
+            $listx->tanggal = $row->tanggal_post;
+            $listx->kategori = $row->nama_kategori;
+            $listx->jenis = "berita";
+            $list[] = $listx;
+        }
+        $model['list'] = $list;
 
         $this->load->library('pagination');
         $config = $this->storage->init_pagination("berita/page/", $this->berita_model->get_count_berita());
@@ -45,8 +69,7 @@ class berita extends CI_Controller {
     public function detail($id) {
         $data['title'] = "Berita";
         $model['list_berita'] = $this->berita_model->get_last_berita();
-        $model['list_kategori'] = $this->berita_model->get_list_kategori();
-        $model['list'] = $this->berita_model->get_last_berita();
+        $model['list_event'] = $this->event_model->get_last();
         $model['berita'] = $this->berita_model->get_detail_berita($id)->row();
 
         $this->load->view('news_header', $data);
@@ -68,10 +91,10 @@ class berita extends CI_Controller {
         $data['title'] = "Berita";
         $model['list_kategori'] = $this->berita_model->get_list_kategori();
         $model['id'] = $this->berita_model->get_id()->row()->id;
-        if (empty($model['id'])){
-            $model['id'] = date("Ym")."0001";
+        if (empty($model['id'])) {
+            $model['id'] = date("Ym") . "0001";
         }
-        
+
         $this->load->view('admin/header', $data);
         $this->load->view('admin/news_add', $model);
         $this->load->view('admin/news_footer');

@@ -40,7 +40,7 @@
                     </h1>
                     <nav id="nav">
                         <ul class="menu">
-                            <li><?= anchor("beranda", "Beranda", array('title' => 'Beranda', 'class' => 'active')) ?></li>
+                            <li><?= anchor("beranda", "Beranda", array('title' => 'Beranda')) ?></li>
                             <li><a href="#" title = 'Jeduthun Salvatin Ministry'>JSM</a>
                                 <ul>
                                     <li><a href="#">Koordinator Bidang</a>
@@ -65,7 +65,7 @@
                                     <li><a href="#">Domus Fidei / PD</a></li>
                                 </ul>
                             </li>
-                            <li><?= anchor("berita", "Berita & Events", array('title' => 'Berita & Events')) ?></li>
+                            <li><?= anchor("berita", "Berita & Events", array('title' => 'Berita & Events', 'class' => 'active')) ?></li>
                             <li><?= anchor("galeri", "Galeri", array('title' => 'Galeri')) ?></li>
                             <li><?= anchor("tentang", "Tentang JSM", array('title' => 'Tentang JSM')) ?></li>
                         </ul>

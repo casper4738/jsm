@@ -8,7 +8,7 @@
                         <?php
                         for ($index = 0; $index < $list_berita->num_rows(); $index++) {
                             $row = $list_berita->result()[$index];
-                            if ($index == $list->num_rows() - 1) {
+                            if ($index == $list_berita->num_rows() - 1) {
                                 echo "<li class='last-item'>" . anchor("berita/detail/" . $row->id_berita, $row->judul_berita, array('title' => $row->judul_berita)) . "</li>";
                             } else {
                                 echo "<li>" . anchor("berita/detail/" . $row->id_berita, $row->judul_berita, array('title' => $row->judul_berita)) . "</li>";
@@ -17,15 +17,16 @@
                         ?>
                     </ul>
                     <br>
-                    <h3>Kategori</h3>
+                    <h3>Event</h3>
                     <ul class="list-1">
                         <?php
-                        for ($index = 0; $index < $list_kategori->num_rows(); $index++) {
-                            $row = $list_kategori->result()[$index];
-                            if ($index == $list->num_rows() - 1) {
-                                echo "<li class='last-item'>" . anchor("berita/detail/" . $row->id_kategori, $row->nama_kategori, array('class' => 'link-1')) . "</li>";
+                        echo "<li>" . anchor("event/all/", "<strong>JADWAL SEMUA EVENT</strong>", array('class' => 'link-1')) . "</li>";
+                        for ($index = 0; $index < $list_event->num_rows(); $index++) {
+                            $row = $list_event->result()[$index];
+                            if ($index == $list_event->num_rows() - 1) {
+                                echo "<li class='last-item'>" . anchor("event/detail/" . $row->id_event, $row->judul_event, array('class' => 'link-1')) . "</li>";
                             } else {
-                                echo "<li>" . anchor("berita/detail/" . $row->id_kategori, $row->nama_kategori, array('class' => 'link-1')) . "</li>";
+                                echo "<li>" . anchor("event/detail/" . $row->id_event, $row->judul_event, array('class' => 'link-1')) . "</li>";
                             }
                         }
                         ?>
