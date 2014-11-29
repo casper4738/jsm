@@ -16,6 +16,87 @@ class sel extends CI_Controller {
         $this->jadwal();
     }
 
+    public function pelayanan() {
+        $data['title'] = "Jadwal Tugas";
+        $model['title'] = strtoupper("JADWAL PELAYANAN $string");
+
+        $model['bulan1'] = $this->input->get("bulan1");
+        $model['tahun1'] = $this->input->get("tahun1");
+        $model['bulan2'] = $this->input->get("bulan2");
+        $model['tahun2'] = $this->input->get("tahun2");
+
+        if (empty($model['bulan1'])) {
+            $model['bulan1'] = date("m");
+        }
+        if (empty($model['tahun1'])) {
+            $model['tahun1'] = date("Y");
+        }
+        if (empty($model['bulan2'])) {
+            $model['bulan2'] = date("m");
+        }
+        if (empty($model['tahun2'])) {
+            $model['tahun2'] = date("Y");
+        }
+
+        $this->load->view('sel_header', $data);
+        $this->load->view('pelayanan_content', $model);
+        $this->load->view('footer');
+    }
+    
+    public function english_mass() {
+        $data['title'] = "Jadwal Tugas";
+        $model['title'] = strtoupper("JADWAL PELAYANAN $string");
+
+        $model['bulan1'] = $this->input->get("bulan1");
+        $model['tahun1'] = $this->input->get("tahun1");
+        $model['bulan2'] = $this->input->get("bulan2");
+        $model['tahun2'] = $this->input->get("tahun2");
+
+        if (empty($model['bulan1'])) {
+            $model['bulan1'] = date("m");
+        }
+        if (empty($model['tahun1'])) {
+            $model['tahun1'] = date("Y");
+        }
+        if (empty($model['bulan2'])) {
+            $model['bulan2'] = date("m");
+        }
+        if (empty($model['tahun2'])) {
+            $model['tahun2'] = date("Y");
+        }
+
+        $this->load->view('sel_header', $data);
+        $this->load->view('english_mass_content', $model);
+        $this->load->view('footer');
+    }
+    
+    public function doa_malam() {
+        $data['title'] = "Jadwal Tugas";
+        $model['title'] = strtoupper("JADWAL PELAYANAN $string");
+
+        $model['bulan1'] = $this->input->get("bulan1");
+        $model['tahun1'] = $this->input->get("tahun1");
+        $model['bulan2'] = $this->input->get("bulan2");
+        $model['tahun2'] = $this->input->get("tahun2");
+
+        if (empty($model['bulan1'])) {
+            $model['bulan1'] = date("m");
+        }
+        if (empty($model['tahun1'])) {
+            $model['tahun1'] = date("Y");
+        }
+        if (empty($model['bulan2'])) {
+            $model['bulan2'] = date("m");
+        }
+        if (empty($model['tahun2'])) {
+            $model['tahun2'] = date("Y");
+        }
+
+        $this->load->view('sel_header', $data);
+        $this->load->view('doa_malam_content', $model);
+        $this->load->view('footer');
+    }
+
     public function jadwal($string = "A") {
         $data['title'] = "Jadwal Tugas Sel";
         $model['title'] = strtoupper("JADWAL TUGAS SEL $string");
@@ -72,28 +153,8 @@ class sel extends CI_Controller {
         redirect("admin/sel/" . $data['string1']);
     }
 
-    public function add_pelayanan1() {
+    public function add_pelayanan() {
         if ($this->session->userdata('logged_in')) {
-//            $data['title'] = "Jadwal";
-//            $model['bulan'] = $this->input->get("bulan");
-//            $model['tahun'] = $this->input->get("tahun");
-//
-//            if (empty($model['bulan'])) {
-//                $model['bulan'] = date("m");
-//            }
-//            if (empty($model['tahun'])) {
-//                $model['tahun'] = date("Y");
-//            }
-//
-//            $model['data_array'] = array();
-//            foreach ($this->sel_model->get_list3($model['tahun'], $model['bulan'], "SUDIANG")->result() as $value) {
-//                $model['data_array'][] = explode("-", $value->tanggal)[2];
-//            }
-//
-//            $this->load->view("admin/sel_header", $data);
-//            $this->load->view("admin/sudiang_input", $model);
-//            $this->load->view("admin/sel_footer");
-           
             $data['title'] = "Jadwal";
             $model['bulan'] = $this->input->get("bulan");
             $model['tahun'] = $this->input->get("tahun");
@@ -118,180 +179,82 @@ class sel extends CI_Controller {
         }
     }
 
-    public function add_pelayanan2() {
-        if ($this->session->userdata('logged_in')) {
-            $data['title'] = "Jadwal";
-            $model['bulan'] = $this->input->get("bulan");
-            $model['tahun'] = $this->input->get("tahun");
-
-            if (empty($model['bulan'])) {
-                $model['bulan'] = date("m");
-            }
-            if (empty($model['tahun'])) {
-                $model['tahun'] = date("Y");
-            }
-
-            $model['data_array'] = array();
-            $model['data_arrayx'] = array();
-            foreach ($this->sel_model->get_list3($model['tahun'], $model['bulan'], "PEDAL")->result() as $value) {
-                $model['data_array'][] = explode("-", $value->tanggal)[2];
-                $model['data_arrayx'][] = $this->sel_model->get_list2($value->tanggal, "PEDAL")->result()[0]->nama_sel;
-            }
-
-            $this->load->view("admin/header", $data);
-            $this->load->view("admin/pedal_input", $model);
-            $this->load->view("admin/footer");
-        } else {
-            redirect('login', 'refresh');
-        }
-    }
-
-    public function add_pelayanan3() {
-        if ($this->session->userdata('logged_in')) {
-            $data['title'] = "Jadwal";
-            $model['bulan'] = $this->input->get("bulan");
-            $model['tahun'] = $this->input->get("tahun");
-
-            if (empty($model['bulan'])) {
-                $model['bulan'] = date("m");
-            }
-            if (empty($model['tahun'])) {
-                $model['tahun'] = date("Y");
-            }
-
-            $model['data_array'] = array();
-            foreach ($this->sel_model->get_list3($model['tahun'], $model['bulan'], "SYAFAAT")->result() as $value) {
-                $model['data_array'][] = explode("-", $value->tanggal)[2];
-            }
-
-            $this->load->view("admin/sel_header", $data);
-            $this->load->view("admin/syafaat_input", $model);
-            $this->load->view("admin/sel_footer");
-        } else {
-            redirect('login', 'refresh');
-        }
-    }
-
-    public function add_pelayanan4() {
-        if ($this->session->userdata('logged_in')) {
-            $data['title'] = "Jadwal";
-            $model['bulan'] = $this->input->get("bulan");
-            $model['tahun'] = $this->input->get("tahun");
-
-            if (empty($model['bulan'])) {
-                $model['bulan'] = date("m");
-            }
-            if (empty($model['tahun'])) {
-                $model['tahun'] = date("Y");
-            }
-
-            $model['data_array'] = array();
-            foreach ($this->sel_model->get_list3($model['tahun'], $model['bulan'], "POS")->result() as $value) {
-                $model['data_array'][] = explode("-", $value->tanggal)[2];
-            }
-
-            $this->load->view("admin/sel_header", $data);
-            $this->load->view("admin/pos_input", $model);
-            $this->load->view("admin/sel_footer");
-        } else {
-            redirect('login', 'refresh');
-        }
-    }
-
-    public function insert_pelayanan1() {
+    public function insert_pelayanan() {
         $tahun = $this->input->post("tahun");
         $bulan = sprintf('%02d', $this->input->post("bulan"));
 
         $this->sel_model->delete_by_tanggal($tahun, $bulan, "SUDIANG");
         $this->sel_model->delete_by_tanggal($tahun, $bulan, "GABUNGAN");
-
-        $list_tanggal = $this->input->post("tanggal");
-        for ($index = 0; $index < count($list_tanggal); $index++) {
-            $value = $list_tanggal[$index];
-            $data['tanggal'] = "2014-$bulan-$value";
-            foreach ($this->input->post("sudiang$value" . "_") as $value1) {
-                $data['tugas'] = "SUDIANG";
-                $data['id_sel'] = $this->sel_model->get_id()->row()->id;
-                if (empty($data['id_sel'])) {
-                    $data['id_sel'] = date("Ym") . "0001";
-                }
-                $data['nama_sel'] = $value1;
-                $this->sel_model->insert($data);
-            }
-
-            foreach ($this->input->post("gabungan$value" . "_") as $value1) {
-                $data['tugas'] = "GABUNGAN";
-                $data['id_sel'] = $this->sel_model->get_id()->row()->id;
-                if (empty($data['id_sel'])) {
-                    $data['id_sel'] = date("Ym") . "0001";
-                }
-                $data['nama_sel'] = $value1;
-                $this->sel_model->insert($data);
-            }
-        }
-        redirect("admin/pelayanan");
-    }
-
-    public function insert_pelayanan2() {
-        $tahun = $this->input->post("tahun");
-        $bulan = sprintf('%02d', $this->input->post("bulan"));
         $this->sel_model->delete_by_tanggal($tahun, $bulan, "PEDAL");
-
-        $list_tanggal = $this->input->post("tanggal");
-        for ($index = 0; $index < count($list_tanggal); $index++) {
-            $value = $list_tanggal[$index];
-            $data['tanggal'] = "2014-$bulan-$value";
-            $data['tugas'] = "PEDAL";
-            $data['id_sel'] = $this->sel_model->get_id()->row()->id;
-            if (empty($data['id_sel'])) {
-                $data['id_sel'] = date("Ym") . "0001";
-            }
-            $data['nama_sel'] = $this->input->post("pedal$value" . "_")[0];
-            $this->sel_model->insert($data);
-            echo "MM$index : " . $data['nama_sel'];
-        }
-
-        redirect("admin/pelayanan");
-    }
-
-    public function insert_pelayanan3() {
-        $tahun = $this->input->post("tahun");
-        $bulan = sprintf('%02d', $this->input->post("bulan"));
         $this->sel_model->delete_by_tanggal($tahun, $bulan, "SYAFAAT");
-        $list_tanggal = $this->input->post("tanggal");
-        for ($index = 0; $index < count($list_tanggal); $index++) {
-            $value = $list_tanggal[$index];
-            $data['tanggal'] = "2014-$bulan-$value";
-            foreach ($this->input->post("syafaat$value" . "_") as $value1) {
-                $data['tugas'] = "SYAFAAT";
-                $data['id_sel'] = $this->sel_model->get_id()->row()->id;
-                if (empty($data['id_sel'])) {
-                    $data['id_sel'] = date("Ym") . "0001";
-                }
-                $data['nama_sel'] = $value1;
-                $this->sel_model->insert($data);
-            }
-        }
-        redirect("admin/pelayanan");
-    }
-
-    public function insert_pelayanan4() {
-        $tahun = $this->input->post("tahun");
-        $bulan = sprintf('%02d', $this->input->post("bulan"));
         $this->sel_model->delete_by_tanggal($tahun, $bulan, "POS");
+
         $list_tanggal = $this->input->post("tanggal");
         for ($index = 0; $index < count($list_tanggal); $index++) {
             $value = $list_tanggal[$index];
             $data['tanggal'] = "2014-$bulan-$value";
-            foreach ($this->input->post("pos$value" . "_") as $value1) {
-                $data['tugas'] = "POS";
-                $data['id_sel'] = $this->sel_model->get_id()->row()->id;
-                if (empty($data['id_sel'])) {
-                    $data['id_sel'] = date("Ym") . "0001";
+            echo $data['tanggal'];
+            foreach ($this->input->post("sudiang$value" . "_") as $value1) {
+                $str = explode(",", $value1);
+                foreach ($str as $row) {
+                    $data['tugas'] = "SUDIANG";
+                    $data['id_sel'] = $this->sel_model->get_id()->row()->id;
+                    if (empty($data['id_sel'])) {
+                        $data['id_sel'] = date("Ym") . "0001";
+                    }
+                    $data['nama_sel'] = $row;
+                    $this->sel_model->insert($data);
                 }
-                $data['nama_sel'] = $value1;
-                $this->sel_model->insert($data);
             }
+            foreach ($this->input->post("gabungan$value" . "_") as $value1) {
+                $str = explode(",", $value1);
+                foreach ($str as $row) {
+                    $data['tugas'] = "GABUNGAN";
+                    $data['id_sel'] = $this->sel_model->get_id()->row()->id;
+                    if (empty($data['id_sel'])) {
+                        $data['id_sel'] = date("Ym") . "0001";
+                    }
+                    $data['nama_sel'] = $row;
+                    $this->sel_model->insert($data);
+                }
+            }
+            foreach ($this->input->post("pedal$value" . "_") as $value1) {
+                $str = explode(",", $value1);
+                foreach ($str as $row) {
+                    $data['tugas'] = "PEDAL";
+                    $data['id_sel'] = $this->sel_model->get_id()->row()->id;
+                    if (empty($data['id_sel'])) {
+                        $data['id_sel'] = date("Ym") . "0001";
+                    }
+                    $data['nama_sel'] = $row;
+                    $this->sel_model->insert($data);
+                }
+            }
+            foreach ($this->input->post("syafaat$value" . "_") as $value1) {
+                $str = explode(",", $value1);
+                foreach ($str as $row) {
+                    $data['tugas'] = "SYAFAAT";
+                    $data['id_sel'] = $this->sel_model->get_id()->row()->id;
+                    if (empty($data['id_sel'])) {
+                        $data['id_sel'] = date("Ym") . "0001";
+                    }
+                    $data['nama_sel'] = $row;
+                    $this->sel_model->insert($data);
+                }
+            }
+            foreach ($this->input->post("pos$value" . "_") as $value1) {
+                $str = explode(",", $value1);
+                foreach ($str as $row) {
+                    $data['tugas'] = "POS";
+                    $data['id_sel'] = $this->sel_model->get_id()->row()->id;
+                    if (empty($data['id_sel'])) {
+                        $data['id_sel'] = date("Ym") . "0001";
+                    }
+                    $data['nama_sel'] = $row;
+                    $this->sel_model->insert($data);
+                }
+            }
+            echo "<br/>";
         }
         redirect("admin/pelayanan");
     }
@@ -315,7 +278,10 @@ class sel extends CI_Controller {
             foreach ($this->sel_model->get_list3($model['tahun'], $model['bulan'], "PDB")->result() as $value) {
                 $array1[] = $value->tanggal;
             }
-            foreach ($this->sel_model->get_list3($model['tahun'], $model['bulan'], "SYAFAAT_MALAM")->result() as $value) {
+            foreach ($this->sel_model->get_list3($model['tahun'], $model['bulan'], "SYAFAAT_MALAM1")->result() as $value) {
+                $array2[] = $value->tanggal;
+            }
+            foreach ($this->sel_model->get_list3($model['tahun'], $model['bulan'], "SYAFAAT_MALAM2")->result() as $value) {
                 $array2[] = $value->tanggal;
             }
             $list_sel = array_unique(array_merge($array1, $array2));
@@ -337,31 +303,105 @@ class sel extends CI_Controller {
         $tahun = $this->input->post("tahun");
         $bulan = sprintf('%02d', $this->input->post("bulan"));
         $this->sel_model->delete_by_tanggal($tahun, $bulan, "PDB");
-        $this->sel_model->delete_by_tanggal($tahun, $bulan, "SYAFAAT_MALAM");
+        $this->sel_model->delete_by_tanggal($tahun, $bulan, "SYAFAAT_MALAM1");
+        $this->sel_model->delete_by_tanggal($tahun, $bulan, "SYAFAAT_MALAM2");
 
         $list_tanggal = $this->input->post("tanggal");
         for ($index = 0; $index < count($list_tanggal); $index++) {
             $value = $list_tanggal[$index];
             $data['tanggal'] = "2014-$bulan-$value";
-            $data['tugas'] = "PDB";
-            $data['id_sel'] = $this->sel_model->get_id()->row()->id;
-            if (empty($data['id_sel'])) {
-                $data['id_sel'] = date("Ym") . "0001";
+            foreach ($this->input->post("pdb$value" . "_") as $value1) {
+                $str = explode(",", $value1);
+                foreach ($str as $row) {
+                    $data['tugas'] = "PDB";
+                    $data['id_sel'] = $this->sel_model->get_id()->row()->id;
+                    if (empty($data['id_sel'])) {
+                        $data['id_sel'] = date("Ym") . "0001";
+                    }
+                    $data['nama_sel'] = $row;
+                    $this->sel_model->insert($data);
+                }
             }
-            $data['nama_sel'] = $this->input->post("pdb$value" . "_")[0];
-            $this->sel_model->insert($data);
 
-
-            $data['tugas'] = "SYAFAAT_MALAM";
-            $data['id_sel'] = $this->sel_model->get_id()->row()->id;
-            if (empty($data['id_sel'])) {
-                $data['id_sel'] = date("Ym") . "0001";
+            foreach ($this->input->post("syafaat1$value" . "_") as $value1) {
+                $str = explode(",", $value1);
+                foreach ($str as $row) {
+                    $data['tugas'] = "SYAFAAT_MALAM1";
+                    $data['id_sel'] = $this->sel_model->get_id()->row()->id;
+                    if (empty($data['id_sel'])) {
+                        $data['id_sel'] = date("Ym") . "0001";
+                    }
+                    $data['nama_sel'] = $row;
+                    $this->sel_model->insert($data);
+                }
             }
-            $data['nama_sel'] = $this->input->post("syafaat_malam$value" . "_")[0];
-            $this->sel_model->insert($data);
+            foreach ($this->input->post("syafaat2$value" . "_") as $value1) {
+                $str = explode(",", $value1);
+                foreach ($str as $row) {
+                    $data['tugas'] = "SYAFAAT_MALAM2";
+                    $data['id_sel'] = $this->sel_model->get_id()->row()->id;
+                    if (empty($data['id_sel'])) {
+                        $data['id_sel'] = date("Ym") . "0001";
+                    }
+                    $data['nama_sel'] = $row;
+                    $this->sel_model->insert($data);
+                }
+            }
         }
 
-        redirect("admin/doa_malam");
+        redirect("admin/pelayanan");
+    }
+
+    public function add_english_mass() {
+        if ($this->session->userdata('logged_in')) {
+            $data['title'] = "Jadwal";
+            $model['bulan'] = $this->input->get("bulan");
+            $model['tahun'] = $this->input->get("tahun");
+
+            if (empty($model['bulan'])) {
+                $model['bulan'] = date("m");
+            }
+            if (empty($model['tahun'])) {
+                $model['tahun'] = date("Y");
+            }
+
+            $model['data_array'] = array();
+            foreach ($this->sel_model->get_list3($model['tahun'], $model['bulan'], "ENGLISH_MASS")->result() as $value) {
+                $model['data_array'][] = explode("-", $value->tanggal)[2];
+            }
+
+            $this->load->view("admin/header", $data);
+            $this->load->view("admin/english_mass_input", $model);
+            $this->load->view("admin/footer");
+        } else {
+            redirect('login', 'refresh');
+        }
+    }
+
+    public function insert_english_mass() {
+        $tahun = $this->input->post("tahun");
+        $bulan = sprintf('%02d', $this->input->post("bulan"));
+        $this->sel_model->delete_by_tanggal($tahun, $bulan, "ENGLISH_MASS");
+
+        $list_tanggal = $this->input->post("tanggal");
+        for ($index = 0; $index < count($list_tanggal); $index++) {
+            $value = $list_tanggal[$index];
+            $data['tanggal'] = "2014-$bulan-$value";
+            foreach ($this->input->post("english_mass$value" . "_") as $value1) {
+                $str = explode(",", $value1);
+                foreach ($str as $row) {
+                    $data['tugas'] = "ENGLISH_MASS";
+                    $data['id_sel'] = $this->sel_model->get_id()->row()->id;
+                    if (empty($data['id_sel'])) {
+                        $data['id_sel'] = date("Ym") . "0001";
+                    }
+                    $data['nama_sel'] = $row;
+                    $this->sel_model->insert($data);
+                }
+            }
+        }
+
+        redirect("admin/pelayanan");
     }
 
 }

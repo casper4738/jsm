@@ -30,9 +30,19 @@
         <script src="<?= base_url(); ?>asset/template1/js/NewsGoth_700.font.js" type="text/javascript"></script>
         <script src="<?= base_url(); ?>asset/template1/js/Vegur_300.font.js" type="text/javascript"></script> 
         <script src="<?= base_url(); ?>asset/template1/js/FF-cash.js" type="text/javascript"></script>
-
-
-
+        
+        <script type="text/javascript" src="<?= base_url(); ?>asset/export/jquery.min.js"></script>
+        <script type="text/javascript" src="<?= base_url(); ?>asset/export/tableExport.js"></script>
+        <script type="text/javascript" src="<?= base_url(); ?>asset/export/jquery.base64.js"></script>
+        <script type="text/javascript" src="<?= base_url(); ?>asset/export/html2canvas.js"></script>
+        <script type="text/javascript" src="<?= base_url(); ?>asset/export/jspdf/libs/sprintf.js"></script>
+        <script type="text/javascript" src="<?= base_url(); ?>asset/export/jspdf/jspdf.js"></script>
+        <script type="text/javascript" src="<?= base_url(); ?>asset/export/jspdf/libs/base64.js"></script>
+	
+		<script type="text/javaScript">	
+		$(document).ready(function(){		
+		});
+	</script>
     </head>
     <body id="page4">
         <!--==============================header=================================-->
@@ -56,16 +66,11 @@
                                             <?= "<li>" . anchor("korbid/multimedia", "Multimedia", array('title' => 'Kordinator Bidang Multimedia')) . "</li>" ?>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Sel</a>
+                                    <li><a href="#">Jadwal & Tugas</a>
                                         <ul>
-                                            <?php
-                                            $array1 = array("A", "B", "C", "D", "E");
-                                            for ($index1 = 0; $index1 < count($array1); $index1++) {
-                                                echo "<li>";
-                                                echo anchor("sel/jadwal/" . $array1[$index1], $array1[$index1], array('title' => 'Sel ' . $array1[$index1]));
-                                                echo "</li>";
-                                            }
-                                            ?>
+                                            <li><?= anchor("sel/pelayanan/", "Jadwal Pelayanan", array('title' => 'Jadwal Pelayanan')) ?></li>
+                                            <li><?= anchor("sel/english_mass/", "Jadwal English Mass", array('title' => 'Jadwal English Mass')) ?></li>
+                                            <li><?= anchor("sel/doa_malam/", "Jadwal Doa Malam", array('title' => 'Jadwal Doa Malam')) ?></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Domus Fidei / PD</a></li>

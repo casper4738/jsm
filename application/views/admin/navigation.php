@@ -42,47 +42,9 @@
         </li>
         <li>
             <?=
-            anchor("", img("asset/template_admin/img/icons/packs/fugue/16x16/clipboard-list.png") .
-                    "Jadwal Tugas Sel<span class='badge red'>5</span>");
+            anchor("admin/pelayanan", img("asset/template_admin/img/icons/packs/fugue/16x16/clipboard-list.png") .
+                    "Jadwal Pelayanan<span class='badge red'>3</span>");
             ?>
-            <ul class="sub">
-                <li><?=
-                    anchor("admin/pelayanan", img("asset/template_admin/img/icons/packs/fugue/16x16/table.png") .
-                            "Pelayanan")
-                    ?>
-                </li>
-                <li><?=
-                    anchor("admin/doa_malam", img("asset/template_admin/img/icons/packs/fugue/16x16/table.png") .
-                            "Doa Malam")
-                    ?>
-                </li>
-<!--                <li><?=
-                    anchor("admin/sel/A", img("asset/template_admin/img/icons/packs/fugue/16x16/table.png") .
-                            "Sel A")
-                    ?>
-                </li>
-                <li><?=
-                    anchor("admin/sel/B", img("asset/template_admin/img/icons/packs/fugue/16x16/table.png") .
-                            "Sel B")
-                    ?>
-                </li>
-                <li><?=
-                    anchor("admin/sel/C", img("asset/template_admin/img/icons/packs/fugue/16x16/table.png") .
-                            "Sel C")
-                    ?>
-                </li>
-                <li><?=
-                    anchor("admin/sel/D", img("asset/template_admin/img/icons/packs/fugue/16x16/table.png") .
-                            "Sel D")
-                    ?>
-                </li>
-                <li><?=
-                    anchor("admin/sel/E", img("asset/template_admin/img/icons/packs/fugue/16x16/table.png") .
-                            "Sel E")
-                    ?>
-                </li>-->
-
-            </ul>
         </li>
         <li><?=
             anchor("admin/event", img("asset/template_admin/img/icons/packs/fugue/16x16/table.png") .

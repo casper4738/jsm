@@ -53,16 +53,11 @@
                                             <?= "<li>".anchor("korbid/multimedia", "Multimedia", array('title' => 'Kordinator Bidang Multimedia'))."</li>"?>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Sel</a>
+                                    <li><a href="#">Jadwal & Tugas</a>
                                         <ul>
-                                            <?php
-                                            $array1 = array("A", "B", "C", "D", "E");
-                                            for ($index1 = 0; $index1 < count($array1); $index1++) {
-                                                echo "<li>";
-                                                echo anchor("sel/jadwal/" . $array1[$index1], $array1[$index1], array('title' => 'Sel ' . $array1[$index1]));
-                                                echo "</li>";
-                                            }
-                                            ?>
+                                            <li><?= anchor("sel/pelayanan/", "Jadwal Pelayanan", array('title' => 'Jadwal Pelayanan')) ?></li>
+                                            <li><?= anchor("sel/english_mass/", "Jadwal English Mass", array('title' => 'Jadwal English Mass')) ?></li>
+                                            <li><?= anchor("sel/doa_malam/", "Jadwal Doa Malam", array('title' => 'Jadwal Doa Malam')) ?></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Domus Fidei / PD</a></li>

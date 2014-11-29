@@ -160,7 +160,7 @@ h1 strong {
     margin: calc(-0.5em + 1px) 0 0 1px;
     padding: 0.5em 0;
     width: 11em;
-     color:#080808;
+    color:#080808;
 }
 
 .dropotron li {
@@ -182,7 +182,7 @@ h1 strong {
 
 .dropotron li:first-child > a, .dropotron li:first-child > span {
     border-top: 0;
-    
+
 }
 
 .dropotron li.active > a, .dropotron li.active > span, .dropotron li:hover > a, .dropotron li:hover > span {
@@ -191,12 +191,12 @@ h1 strong {
 
 
 .dropotron li:hover > a, .dropotron li:hover > span{
-     color: #fff;
+    color: #fff;
 }
 
 
 .dropotron li.active > a, .dropotron li.active > span{
-     color: #080808;
+    color: #080808;
 }
 
 .dropotron.level-0 {
@@ -534,4 +534,17 @@ footer {
     text-align:center;
     margin-left:-5px;
     padding-top: 2px
+}
+
+#new_table {
+    border:2px solid #000;
+    padding: 10px;
+    background: #fff;
+    border-collapse:collapse;
+    width: 100%;
+}
+
+#new_table td {
+    padding: 10px;
+    border:2px solid #000;
 }

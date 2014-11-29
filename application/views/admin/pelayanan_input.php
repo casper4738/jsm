@@ -10,7 +10,8 @@
         <div class="container_12">
             <div class="grid_8">
                 <h1>Jadwal Pelayanan</h1>
-                <p>check list tanggal, kemudian pilih sel dapat dipilih lebih dari satu</p>
+                <p>check list tanggal, kemudian isi sel yang bertugas misal A1, B1 bila lebih dari satu pisahkan dengan koma</p>
+
             </div>
             <div class="grid_4">
                 <div class="block-border">
@@ -49,7 +50,7 @@
                     <?php
                     $hidden = array('bulan' => $bulan, 'tahun' => $tahun);
                     $attributes = array('class' => 'block-content form', 'id' => 'validate-form');
-                    echo form_open('sel/insert_doa_malam', $attributes, $hidden);
+                    echo form_open('sel/insert_pelayanan', $attributes, $hidden);
                     ?>
 
                     <div class="_100">
@@ -76,6 +77,18 @@
                                 </tr>
                                 <?php
 
+                                function function1($array) {
+                                    $stringx = "";
+                                    for ($i = 0; $i < $array->num_rows(); $i++) {
+                                        $row = $array->result()[$i];
+                                        $stringx = $stringx . trim($row->nama_sel);
+                                        if ($i < $array->num_rows() - 1) {
+                                            $stringx = $stringx . ", ";
+                                        }
+                                    }
+                                    return $stringx;
+                                }
+
                                 function functionCek($data_array, $int) {
                                     for ($index = 0; $index < count($data_array); $index++) {
                                         if ($data_array[$index] == $int) {
@@ -92,60 +105,15 @@
                                     return " ";
                                 }
 
-                                for ($index = 1; $index < 31; $index++) {
+                                for ($index = 1; $index <= $this->storage->get_jumlah_hari($bulan, $tahun); $index++) {
                                     $nomor = $index - 1;
                                     $index = sprintf('%02d', $index);
 
-                                    $strx1 = "";
-                                    $strx2 = "";
-                                    $strx3 = "";
-                                    $strx4 = "";
-                                    $strx5 = "";
-                                    
-                                    $listx1 = $this->sel_model->get_list2("$tahun-$bulan-$index", "SUDIANG");
-                                    $listx2 = $this->sel_model->get_list2("$tahun-$bulan-$index", "GABUNGAN");
-                                    $listx3 = $this->sel_model->get_list2("$tahun-$bulan-$index", "PEDAL");
-                                    $listx4 = $this->sel_model->get_list2("$tahun-$bulan-$index", "SYAFAAT");
-                                    $listx5 = $this->sel_model->get_list2("$tahun-$bulan-$index", "POS");
-                                    for ($i = 0; $i < $listx1->num_rows(); $i++) {
-                                        $row = $listx1->result()[$i];
-                                        $strx1 = $strx1 . $row->nama_sel;
-                                        if ($i < $listx1->num_rows() - 1) {
-                                            $strx1 = $strx1 . ", ";
-                                        }
-                                    }
-                                    
-                                    for ($i = 0; $i < $listx2->num_rows(); $i++) {
-                                        $row = $listx2->result()[$i];
-                                        $strx2 = $strx2 . $row->nama_sel;
-                                        if ($i < $listx2->num_rows() - 1) {
-                                            $strx2 = $strx2 . ", ";
-                                        }
-                                    }
-                                    
-                                    for ($i = 0; $i < $listx3->num_rows(); $i++) {
-                                        $row = $listx3->result()[$i];
-                                        $strx3 = $strx3 . $row->nama_sel;
-                                        if ($i < $listx3->num_rows() - 1) {
-                                            $strx3 = $strx3 . ", ";
-                                        }
-                                    }
-                                    
-                                    for ($i = 0; $i < $listx4->num_rows(); $i++) {
-                                        $row = $listx4->result()[$i];
-                                        $strx4 = $strx4 . $row->nama_sel;
-                                        if ($i < $listx4->num_rows() - 1) {
-                                            $strx4 = $strx4 . ", ";
-                                        }
-                                    }
-                                    
-                                    for ($i = 0; $i < $listx5->num_rows(); $i++) {
-                                        $row = $listx5->result()[$i];
-                                        $strx5 = $strx5 . $row->nama_sel;
-                                        if ($i < $listx5->num_rows() - 1) {
-                                            $strx5 = $strx5 . ", ";
-                                        }
-                                    }
+                                    $strx1 = function1($this->sel_model->get_list2("$tahun-$bulan-$index", "SUDIANG"));
+                                    $strx2 = function1($this->sel_model->get_list2("$tahun-$bulan-$index", "GABUNGAN"));
+                                    $strx3 = function1($this->sel_model->get_list2("$tahun-$bulan-$index", "PEDAL"));
+                                    $strx4 = function1($this->sel_model->get_list2("$tahun-$bulan-$index", "SYAFAAT"));
+                                    $strx5 = function1($this->sel_model->get_list2("$tahun-$bulan-$index", "POS"));
                                     
                                     echo "<tr>";
                                     echo "<td style='vertical-align:middle; text-align:center'><input type='checkbox' name='tanggal[]' value='$index' " . functionCek($data_array, $index) . " /> $index</td>";

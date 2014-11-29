@@ -54,4 +54,23 @@ class storage {
         return $config;
     }
 
+    public function get_jumlah_hari($bulan, $tahun) {
+        if ($bulan == 2) {
+            if ($tahun % 4 == 0) {
+                $hari = 29;
+            } else {
+                $hari = 28;
+            }
+        } else if ($bulan <= 7 && $bulan % 2 == 0) {
+            $hari = 30;
+        } else if ($bulan <= 7 && $bulan % 2 == 1) {
+            $hari = 31;
+        } else if ($bulan > 7 && $bulan % 2 == 0) {
+            $hari = 31;
+        } else if ($bulan > 7 && $bulan % 2 == 1) {
+            $hari = 30;
+        }
+        return $hari;
+    }
+
 }

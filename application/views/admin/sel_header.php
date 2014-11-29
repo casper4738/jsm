@@ -44,7 +44,9 @@
                     <div id="user-info">
                         <p>
                             <span class="messages">Selamat Datang <a href="javascript:void(0);">Administrator</a>
-                            <a href="javascript:void(0);" class="button red">Logout</a>
+                            <?php
+                                echo anchor("admin/logout", "Logout", array('class'=>'button red'));
+                                ?>
                         </p>
                     </div> <!--! end of #user-info -->
 

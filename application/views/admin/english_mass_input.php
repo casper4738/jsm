@@ -11,7 +11,6 @@
             <div class="grid_8">
                 <h1>Jadwal Pelayanan</h1>
                 <p>check list tanggal, kemudian isi sel yang bertugas misal A1, B1 bila lebih dari satu pisahkan dengan koma</p>
-
             </div>
             <div class="grid_4">
                 <div class="block-border">
@@ -50,7 +49,7 @@
                     <?php
                     $hidden = array('bulan' => $bulan, 'tahun' => $tahun);
                     $attributes = array('class' => 'block-content form', 'id' => 'validate-form');
-                    echo form_open('sel/insert_doa_malam', $attributes, $hidden);
+                    echo form_open('sel/insert_english_mass', $attributes, $hidden);
                     ?>
 
                     <div class="_100">
@@ -70,8 +69,7 @@
                             <table border="1" cellpadding="5" >
                                 <tr>
                                     <td style='text-align:center' width="60"><strong>Tanggal</strong></td>
-                                    <td style='text-align:center'  ><strong>USHER</strong></td>
-                                    <td style='text-align:center' colspan="3"><strong>SYAFAAT</strong></td>
+                                    <td style='text-align:center' ><strong>ENGLISH_MASS</strong></td>
                                 </tr>
                                 <?php
 
@@ -84,25 +82,13 @@
                                     return " ";
                                 }
 
-                                function functionCek2($string, $int) {
-                                    if ($string == $int) {
-                                        return " checked ";
-                                    }
-                                    return " ";
-                                }
-
                                 for ($index = 1; $index <= $this->storage->get_jumlah_hari($bulan, $tahun); $index++) {
                                     $index = sprintf('%02d', $index);
-                                    $strx1 = $this->sel_model->get_list2("$tahun-$bulan-$index", "PDB")->result()[0]->nama_sel;
-                                    $strx2 = $this->sel_model->get_list2("$tahun-$bulan-$index", "SYAFAAT_MALAM1")->result()[0]->nama_sel;
-                                    $strx3 = $this->sel_model->get_list2("$tahun-$bulan-$index", "SYAFAAT_MALAM2")->result()[0]->nama_sel;
+                                    $strx1 = $this->sel_model->get_list2("$tahun-$bulan-$index", "ENGLISH_MASS")->result()[0]->nama_sel;
 
                                     echo "<tr>";
                                     echo "<td style='vertical-align:middle; text-align:center'><input type='checkbox' name='tanggal[]' value='$index' " . functionCek($data_array, $index) . " /> $index</td>";
-                                    echo "<td width='150'><input type='text' name='pdb$index []'  value='$strx1' /></td>";
-                                    echo "<td width='150'><input type='text' name='syafaat1$index []'  value='$strx2' /></td>";
-                                    echo "<td>&</td>";
-                                    echo "<td width='150'><input type='text' name='syafaat2$index []'  value='$strx3' /></td>";
+                                    echo "<td width='150'><input type='text' name='english_mass$index []'  value='$strx1' /></td>";
                                     echo "</tr>";
                                 }
                                 ?>
