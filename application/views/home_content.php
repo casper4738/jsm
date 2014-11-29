@@ -4,43 +4,67 @@
             <div class="slider">
                 <ul class="items">
                     <li>
-                        <?= img('asset/template1/images/slider-img1.jpg', TRUE); ?>
+                        <?php
+                        $image_properties1 = array(
+                            'src' => "./uploads/$slider1->id_slider$slider1->file_ext",
+                        );
+                        echo img($image_properties1);
+                        ?>
                         <strong class="banner">
                             <a class="close" href="#">x</a>
-                            <strong>Progress</strong>
-                            <span>Business Company</span>
-                            <b class="margin-bot">Lorem ipsum dolor sit amet, consectetur adipisicing elitsedo eiusmod tempor incididunt ut labore dolore magna aliqua enim ad minim veniam.</b>
-                            <a class="button2" href="#">Read More</a>
+                            <strong>JSM</strong>
+                            <span>Jeduthun Salvation Ministry</span>
+                            <b class="margin-bot">komunitas pujian penyembahan khatolik makassar yang 
+                                mengambil komitmen untuk menumbuhkan hidup kerohaniannya melalui pujian dan 
+                                penyembahan didalam Roh dan kebenaran</b>
                         </strong>
                     </li>
                     <li>
-                        <?= img('asset/template1/images/slider-img2.jpg', TRUE); ?>
+                        <?php
+                        $image_properties2 = array(
+                            'src' => "./uploads/$slider2->id_slider$slider2->file_ext",
+                        );
+                        echo img($image_properties2, TRUE);
+                        ?>
                         <strong class="banner">
                             <a class="close" href="#">x</a>
-                            <strong>SpaSalon</strong>
-                            <span>popular Procedures</span>
-                            <b class="margin-bot">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit<br> in voluptate velit.</b>
-                            <a class="button2" href="#">Read More</a>
+                            <strong>JSM</strong>
+                            <span>Jeduthun Salvation Ministry</span>
+                            <b class="margin-bot">komunitas pujian penyembahan khatolik makassar yang 
+                                mengambil komitmen untuk menumbuhkan hidup kerohaniannya melalui pujian dan 
+                                penyembahan didalam Roh dan kebenaran</b>
                         </strong>
                     </li>
                     <li>
-                        <?= img('asset/template1/images/slider-img3.jpg', TRUE); ?>
+                        <?php
+                        $image_properties3 = array(
+                            'src' => "./uploads/$slider3->id_slider$slider3->file_ext",
+                        );
+                        echo img($image_properties3, TRUE);
+                        ?>
                         <strong class="banner">
                             <a class="close" href="#">x</a>
-                            <strong>GoodCook</strong>
-                            <span>Online cooking recipes</span>
-                            <b class="margin-bot">Esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia <br>deserunt mollit anim.</b>
-                            <a class="button2" href="#">Read More</a>
+                           <strong>JSM</strong>
+                            <span>Jeduthun Salvation Ministry</span>
+                            <b class="margin-bot">komunitas pujian penyembahan khatolik makassar yang 
+                                mengambil komitmen untuk menumbuhkan hidup kerohaniannya melalui pujian dan 
+                                penyembahan didalam Roh dan kebenaran</b>
                         </strong>
                     </li>
                     <li>
-                        <?= img('asset/template1/images/slider-img4.jpg', TRUE); ?>
+                        <?php
+                        $image_properties4 = array(
+                            'src' => "./uploads/$slider4->id_slider$slider4->file_ext",
+                        );
+                        echo img($image_properties4, TRUE);
+                        ?>
                         <strong class="banner">
                             <a class="close" href="#">x</a>
-                            <strong>HandyMan</strong>
-                            <span>Home Services</span>
-                            <b class="margin-bot">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas.</b>
-                            <a class="button2" href="#">Read More</a>
+                            <strong>JSM</strong>
+                            <span>Jeduthun Salvation Ministry</span>
+                            <b class="margin-bot">komunitas pujian penyembahan khatolik makassar yang 
+                                mengambil komitmen untuk menumbuhkan hidup kerohaniannya melalui pujian dan 
+                                penyembahan didalam Roh dan kebenaran</b>
                         </strong>
                     </li>
                 </ul>
@@ -97,16 +121,16 @@
                 <div class="indent-top">
                     <ul class="list-2">
                         <li>
-                            <a class="item" href="#">Berita & Event</a>
-                            <span>Business.Co is one of <a href="http://blog.templatemonster.com/free-website-templates/" target="_blank">free web templates</a> created by TemplateMonster.com team. </span>
+                            <?= anchor("berita", "Berita & Event", array('class' => 'item')); ?>  
+                            <span>Berisi kumpulan artikel, info terkini, kegiatan yang dilakukan dan lain sebagainya</span>
                         </li>
                         <li>
                             <a class="item" href="#">Domus Fidei</a>
-                            <span>This template is optimized for 1280X1024 screen resolution.</span>
+                            <span>komunitas pujian penyembahan khatolik makassar yang mengambil komitmen untuk menumbuhkan hidup kerohaniannya</span>
                         </li>
                         <li class="last-item">
-                            <a class="item" href="#">Why Join With Us?</a>
-                            <span>It is also XHTML &amp; CSS valid. Quis nostrud exercitation ullamco laboris nisi ut.</span>
+                            <?= anchor("event/all", "Jadwal Event", array('class' => 'item')); ?>  
+                            <span>Jadwal dan Info Event</span>
                         </li>
                     </ul>
                 </div>

@@ -78,46 +78,34 @@ class berita extends CI_Controller {
     }
 
     public function add() {
-//        if (!$this->session->userdata('logged_in')) {
-//            // Allow some methods?
-//            $allowed = array(
-//                'some_method_in_this_controller',
-//                'other_method_in_this_controller',
-//            );
-//            if (!in_array($this->router->fetch_method(), $allowed) {
-//                redirect('login');
-//            }
-//        }
-        $data['title'] = "Berita";
-        $model['list_kategori'] = $this->berita_model->get_list_kategori();
-        $model['id'] = $this->berita_model->get_id()->row()->id;
-        if (empty($model['id'])) {
-            $model['id'] = date("Ym") . "0001";
-        }
+        if ($this->session->userdata('logged_in')) {
+            $data['title'] = "Berita";
+            $model['list_kategori'] = $this->berita_model->get_list_kategori();
+            $model['id'] = $this->berita_model->get_id()->row()->id;
+            if (empty($model['id'])) {
+                $model['id'] = date("Ym") . "0001";
+            }
 
-        $this->load->view('admin/header', $data);
-        $this->load->view('admin/news_add', $model);
-        $this->load->view('admin/news_footer');
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/news_add', $model);
+            $this->load->view('admin/news_footer');
+        } else {
+            redirect('login', 'refresh');
+        }
     }
 
     public function edit($id = 0) {
-//        if (!$this->session->userdata('logged_in')) {
-//            // Allow some methods?
-//            $allowed = array(
-//                'some_method_in_this_controller',
-//                'other_method_in_this_controller',
-//            );
-//            if (!in_array($this->router->fetch_method(), $allowed) {
-//                redirect('login');
-//            }
-//        }
-        $data['title'] = "Berita";
-        $model['berita'] = $this->berita_model->get_detail_berita($id)->row();
-        $model['list_kategori'] = $this->berita_model->get_list_kategori();
-        $model['id'] = $id;
-        $this->load->view('admin/header', $data);
-        $this->load->view('admin/news_edit', $model);
-        $this->load->view('admin/news_footer');
+        if ($this->session->userdata('logged_in')) {
+            $data['title'] = "Berita";
+            $model['berita'] = $this->berita_model->get_detail_berita($id)->row();
+            $model['list_kategori'] = $this->berita_model->get_list_kategori();
+            $model['id'] = $id;
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/news_edit', $model);
+            $this->load->view('admin/news_footer');
+        } else {
+            redirect('login', 'refresh');
+        }
     }
 
     public function insert() {

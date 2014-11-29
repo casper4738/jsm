@@ -8,6 +8,7 @@
 
 <!-- scripts concatenated and minified via ant build script-->
 <script defer src="<?= base_url(); ?>asset/template_admin/js/mylibs/jquery.validate.min.js"></script> <!-- Validation from forms -->
+<script defer src="<?= base_url(); ?>asset/template_admin/js/mylibs/jquery.uniform.min.js"></script> <!-- Uniform (Look & Feel from forms) -->
 <script defer src="<?= base_url(); ?>asset/template_admin/js/mylibs/jquery.tipsy.js"></script> <!-- Tooltips -->
 <script defer src="<?= base_url(); ?>asset/template_admin/js/mylibs/jquery.visualize.js"></script> <!-- Charts -->
 <script defer src="<?= base_url(); ?>asset/template_admin/js/mylibs/jquery.slidernav.min.js"></script> <!-- Contact List -->

@@ -13,23 +13,31 @@ class kategori extends CI_Controller {
     }
 
     public function add() {
-        $data['title'] = "Berita";
-        if (empty($model['id'])){
-            $model['id'] = date("Ym")."0001";
+        if ($this->session->userdata('logged_in')) {
+            $data['title'] = "Berita";
+            if (empty($model['id'])) {
+                $model['id'] = date("Ym") . "0001";
+            }
+
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/kategori_add', $model);
+            $this->load->view('admin/footer');
+        } else {
+            redirect('login', 'refresh');
         }
-        
-        $this->load->view('admin/header', $data);
-        $this->load->view('admin/kategori_add', $model);
-        $this->load->view('admin/footer');
     }
 
     public function edit($id = 0) {
-        $data['title'] = "Berita";
-        $model['kategori'] = $this->berita_model->get_detail_kategori($id)->row();
-        $model['id'] = $id;
-        $this->load->view('admin/header', $data);
-        $this->load->view('admin/kategori_edit', $model);
-        $this->load->view('admin/footer');
+        if ($this->session->userdata('logged_in')) {
+            $data['title'] = "Berita";
+            $model['kategori'] = $this->berita_model->get_detail_kategori($id)->row();
+            $model['id'] = $id;
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/kategori_edit', $model);
+            $this->load->view('admin/footer');
+        } else {
+            redirect('login', 'refresh');
+        }
     }
 
     public function insert() {

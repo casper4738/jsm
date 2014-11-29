@@ -33,7 +33,7 @@
             <div class="main">
                 <div class="wrapper">
                     <h1>
-                        <a href="index.html">Jeduthun Salvation Ministry</a>
+                       <?= anchor("login", "Jeduthun Salvation Ministry") ?>
                         <strong>Jeduthun Salvation Ministry</strong>
                     </h1>
                     <nav id="nav">

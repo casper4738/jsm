@@ -38,7 +38,6 @@
                                     <th width="50">NO</th>
                                     <th width="90">Tanggal</th>
                                     <th width="200">Tugas</th>
-                                    <th>Ket</th>
                                     <th width="70"></th>
                                 </tr>
                             </thead>
@@ -51,7 +50,6 @@
                                         <td style="text-align: center"><?= $index ?></td>
                                         <td><?= $row->tanggal ?></td>
                                         <td><?= $row->tugas?></td>
-                                        <td><?= $row->keterangan?></td>
                                         <td><?= anchor("sel/edit/$par3/$row->id_sel", "EDIT") ?> | 
                                             <?= anchor("sel/delete/$par3/$row->id_sel", "HAPUS") ?>
                                         </td>

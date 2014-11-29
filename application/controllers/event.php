@@ -26,13 +26,13 @@ class event extends CI_Controller {
             $data["id"] = $value->id_event;
             $data["title"] = $value->judul_event;
             $data["start"] = $value->tanggal_event;
-            $data["url"] = base_url()."event/detail/$value->id_event"; 
+            $data["url"] = base_url() . "event/detail/$value->id_event";
 //            $data["end"] = "2014-11-11";
 //            $data["rendering"] = "background";
 //            $data["color"] = "#ff9f89";
 //            $data["constraint"] = "availableForMeeting";
 //            $data["overlap"] = "false";
-            
+
             array_push($response, $data);
         }
         $model['data_json'] = json_encode($response);
@@ -54,23 +54,31 @@ class event extends CI_Controller {
     }
 
     public function add() {
-        $data['title'] = "Event";
-        $model['id'] = $this->event_model->get_id()->row()->id;
-        if (empty($model['id'])) {
-            $model['id'] = date("Ym") . "0001";
+        if ($this->session->userdata('logged_in')) {
+            $data['title'] = "Event";
+            $model['id'] = $this->event_model->get_id()->row()->id;
+            if (empty($model['id'])) {
+                $model['id'] = date("Ym") . "0001";
+            }
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/event_add', $model);
+            $this->load->view('admin/event_footer');
+        } else {
+            redirect('login', 'refresh');
         }
-        $this->load->view('admin/header', $data);
-        $this->load->view('admin/event_add', $model);
-        $this->load->view('admin/event_footer');
     }
 
     public function edit($id = 0) {
-        $data['title'] = "Event";
-        $model['event'] = $this->event_model->get_detail($id)->row();
-        $model['id'] = $id;
-        $this->load->view('admin/header', $data);
-        $this->load->view('admin/event_edit', $model);
-        $this->load->view('admin/event_footer');
+        if ($this->session->userdata('logged_in')) {
+            $data['title'] = "Event";
+            $model['event'] = $this->event_model->get_detail($id)->row();
+            $model['id'] = $id;
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/event_edit', $model);
+            $this->load->view('admin/event_footer');
+        } else {
+            redirect('login', 'refresh');
+        }
     }
 
     public function insert() {

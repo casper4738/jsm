@@ -12,10 +12,28 @@
  */
 class storage {
 
+    public function get_bulan($int) {
+        switch ($int) {
+            case 1: return "Januari";
+            case 2: return "Februari";
+            case 3: return "Maret";
+            case 4: return "April";
+            case 5: return "Mei";
+            case 6: return "Juni";
+            case 7: return "Juli";
+            case 8: return "Agustus";
+            case 9: return "September";
+            case 10: return "Oktober";
+            case 11: return "November";
+            case 12: return "Desember";
+            default: break;
+        }
+    }
+
     public function function_more($stringx) {
         $str = "";
         $string = explode(" ", $stringx);
-        if(count($string) < 50) {
+        if (count($string) < 50) {
             $str = $stringx;
         } else {
             for ($index = 0; $index < 50; $index++) {

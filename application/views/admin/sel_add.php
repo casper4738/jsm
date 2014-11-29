@@ -33,9 +33,13 @@
                         <p class="inline-small-label">
                             <span class="label">Kategori</span>
                             <?php
-                            $options["POS"] = "POS";
-                            $options["SHAFAAT KOMUNITAS"] = "SHAFAAT KOMUNITAS";
-                            $options["SHAFAAT DF"] = "SHAFAAT DF";
+                            $options["[PELAYANAN] SEL SUDIANG DAN GABUNGAN"] = "[PELAYANAN] SEL SUDIANG DAN GABUNGAN";
+                            $options["[PELAYANAN] PEDAL"] = "[PELAYANAN] PEDAL";
+                            $options["[PELAYANAN] SYAFAAT"] = "[PELAYANAN] SYAFAAT";
+                            $options["[PELAYANAN] POS"] = "[PELAYANAN] POS";
+                            $options["ENGLISH MASS"] = "ENGLISH MASS";
+                            $options["[DOA MALAM] USHER"] = "[DOA MALAM] USHER";
+                            $options["[DOA MALAM] SYAFAAT"] = "[DOA MALAM] SYAFAAT";
                             echo form_dropdown("string4", $options);
                             ?>
                         </p>

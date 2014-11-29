@@ -33,7 +33,7 @@
             <div class="main">
                 <div class="wrapper">
                     <h1>
-                        <a href="index.html">Jeduthun Salvation Ministry</a>
+                        <?= anchor("login", "Jeduthun Salvation Ministry") ?>
                         <strong>Jeduthun Salvation Ministry</strong>
                     </h1>
                     <nav id="nav">
@@ -65,7 +65,7 @@
                             </li>
                             <li><?= anchor("berita", "Berita & Events", array('title' => 'Berita & Events')) ?></li>
                             <li><?= anchor("galeri", "Galeri", array('title' => 'Galeri', 'class' => 'active')) ?></li>
-                            <li><?= anchor("beranda", "Tentang JSM", array('title' => 'Tentang JSM')) ?></li>
+                            <li><?= anchor("tentang", "Tentang JSM", array('title' => 'Tentang JSM')) ?></li>
                         </ul>
                     </nav>
                 </div>

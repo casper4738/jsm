@@ -11,32 +11,44 @@ class korbid extends CI_Controller {
         $this->load->model('korbid_model');
         $this->load->library('storage');
     }
-    
+
     public function music() {
-        $data['title'] = "Korbid";
-        $model['title'] = "KORDINATOR BIDANG MUSIC";
-        $model['korbid'] = $this->korbid_model->get_detail("music")->row();
-        $this->load->view('korbid_header', $data);
-        $this->load->view('korbid_content', $model);
-        $this->load->view('footer');
+        if ($this->session->userdata('logged_in')) {
+            $data['title'] = "Korbid";
+            $model['title'] = "KORDINATOR BIDANG MUSIC";
+            $model['korbid'] = $this->korbid_model->get_detail("music")->row();
+            $this->load->view('korbid_header', $data);
+            $this->load->view('korbid_content', $model);
+            $this->load->view('footer');
+        } else {
+            redirect('login', 'refresh');
+        }
     }
-    
+
     public function choir() {
-        $data['title'] = "Korbid";
-        $model['title'] = "KORDINATOR BIDANG CHOIR";
-        $model['korbid'] = $this->korbid_model->get_detail("choir")->row();
-        $this->load->view('korbid_header', $data);
-        $this->load->view('korbid_content', $model);
-        $this->load->view('footer');
+        if ($this->session->userdata('logged_in')) {
+            $data['title'] = "Korbid";
+            $model['title'] = "KORDINATOR BIDANG CHOIR";
+            $model['korbid'] = $this->korbid_model->get_detail("choir")->row();
+            $this->load->view('korbid_header', $data);
+            $this->load->view('korbid_content', $model);
+            $this->load->view('footer');
+        } else {
+            redirect('login', 'refresh');
+        }
     }
-    
-     public function multimedia() {
-        $data['title'] = "Korbid";
-        $model['title'] = "KORDINATOR BIDANG MULTIMEDIA";
-        $model['korbid'] = $this->korbid_model->get_detail("multimedia")->row();
-        $this->load->view('korbid_header', $data);
-        $this->load->view('korbid_content', $model);
-        $this->load->view('footer');
+
+    public function multimedia() {
+        if ($this->session->userdata('logged_in')) {
+            $data['title'] = "Korbid";
+            $model['title'] = "KORDINATOR BIDANG MULTIMEDIA";
+            $model['korbid'] = $this->korbid_model->get_detail("multimedia")->row();
+            $this->load->view('korbid_header', $data);
+            $this->load->view('korbid_content', $model);
+            $this->load->view('footer');
+        } else {
+            redirect('login', 'refresh');
+        }
     }
 
     public function update() {
@@ -47,6 +59,5 @@ class korbid extends CI_Controller {
         $this->korbid_model->update($data);
         redirect("admin/korbid/" . $data["nama_korbid"]);
     }
-
 
 }

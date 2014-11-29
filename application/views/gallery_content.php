@@ -75,8 +75,15 @@
                 <?php } ?>
 
             </div>
-
-
+            <br>
+            <br>
+            <center>
+                <div id="pagination">
+                    <?php
+                    echo $this->pagination->create_links();
+                    ?>
+                </div>
+            </center>
         </div>
     </div>
 </section>

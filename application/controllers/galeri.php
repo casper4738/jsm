@@ -15,33 +15,33 @@ class galeri extends CI_Controller {
     public function index() {
         $data['title'] = "Galeri";
         $model['list'] = $this->galeri_model->get_galeri(0);
-        
+
         $this->load->library('pagination');
         $config = $this->storage->init_pagination("galeri/page/", 12, $this->galeri_model->get_count()->row()->id);
         $this->pagination->initialize($config);
-        
+
         $this->load->view('gallery_header', $data);
         $this->load->view('gallery_content', $model);
         $this->load->view('footer');
     }
-    
-    public function page($val=0) {
+
+    public function page($val = 0) {
         $data['title'] = "Galeri";
         $model['list'] = $this->galeri_model->get_galeri($val);
-        
+
         $this->load->library('pagination');
         $config = $this->storage->init_pagination("galeri/page/", 12, $this->galeri_model->get_count()->row()->id);
         $this->pagination->initialize($config);
-        
+
         $this->load->view('gallery_header', $data);
         $this->load->view('gallery_content', $model);
         $this->load->view('footer');
     }
-    
-    public function detail($id=0) {
+
+    public function detail($id = 0) {
         $data['title'] = "Galeri";
         $model['row'] = $this->galeri_model->get_detail($id)->row();
-        
+
         $this->load->view('gallery_header', $data);
         $this->load->view('gallery_detail', $model);
         $this->load->view('footer');
@@ -56,32 +56,40 @@ class galeri extends CI_Controller {
     }
 
     public function add() {
-        $data['title'] = "Galeri";
-        $model = array(
-            'id_galeri' => "",
-            'judul_foto' => "",
-            'tanggal_foto' => date("Y-m-d"),
-            'keterangan' => "",
-            'file_ext' => "",
-            'error' => "",
-        );
-        $model['id_galeri'] = $this->galeri_model->get_id()->row()->id;
-        if (empty($model['id_galeri'])) {
-            $model['id_galeri'] = date("Ym") . "0001";
-        }
+        if ($this->session->userdata('logged_in')) {
+            $data['title'] = "Galeri";
+            $model = array(
+                'id_galeri' => "",
+                'judul_foto' => "",
+                'tanggal_foto' => date("Y-m-d"),
+                'keterangan' => "",
+                'file_ext' => "",
+                'error' => "",
+            );
+            $model['id_galeri'] = $this->galeri_model->get_id()->row()->id;
+            if (empty($model['id_galeri'])) {
+                $model['id_galeri'] = date("Ym") . "0001";
+            }
 
-        $this->load->view('admin/header', $data);
-        $this->load->view('admin/galeri_add', $model);
-        $this->load->view('admin/event_footer');
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/galeri_add', $model);
+            $this->load->view('admin/event_footer');
+        } else {
+            redirect('login', 'refresh');
+        }
     }
 
     public function edit($id = 0) {
-        $data['title'] = "Galeri";
-        $model['galeri'] = $this->galeri_model->get_detail($id)->row();
-        $model['error'] = "";
-        $this->load->view('admin/header', $data);
-        $this->load->view('admin/galeri_edit', $model);
-        $this->load->view('admin/event_footer');
+        if ($this->session->userdata('logged_in')) {
+            $data['title'] = "Galeri";
+            $model['galeri'] = $this->galeri_model->get_detail($id)->row();
+            $model['error'] = "";
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/galeri_edit', $model);
+            $this->load->view('admin/event_footer');
+        } else {
+            redirect('login', 'refresh');
+        }
     }
 
     public function hal($val1, $val2) {

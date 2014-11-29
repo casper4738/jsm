@@ -2,8 +2,8 @@
 <nav id="nav">
     <ul class="menu collapsible shadow-bottom">
         <li><?=
-            anchor("admin/dashboard", img("asset/template_admin/img/icons/packs/fugue/16x16/dashboard.png") .
-                    "Dashboard<span class='badge'>2</span>")
+            anchor("admin/slider", img("asset/template_admin/img/icons/packs/fugue/16x16/dashboard.png") .
+                    "Slider Beranda<span class='badge'>4</span>")
             ?>
         </li>
         <li><?=
@@ -47,6 +47,16 @@
             ?>
             <ul class="sub">
                 <li><?=
+                    anchor("admin/pelayanan", img("asset/template_admin/img/icons/packs/fugue/16x16/table.png") .
+                            "Pelayanan")
+                    ?>
+                </li>
+                <li><?=
+                    anchor("admin/doa_malam", img("asset/template_admin/img/icons/packs/fugue/16x16/table.png") .
+                            "Doa Malam")
+                    ?>
+                </li>
+<!--                <li><?=
                     anchor("admin/sel/A", img("asset/template_admin/img/icons/packs/fugue/16x16/table.png") .
                             "Sel A")
                     ?>
@@ -70,7 +80,7 @@
                     anchor("admin/sel/E", img("asset/template_admin/img/icons/packs/fugue/16x16/table.png") .
                             "Sel E")
                     ?>
-                </li>
+                </li>-->
 
             </ul>
         </li>

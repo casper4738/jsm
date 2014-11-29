@@ -53,7 +53,7 @@
                     $attributes = array('class' => 'block-content form', 'id' => 'validate-form');
                     echo form_open('tentang/update', $attributes);
                     ?>
-                    <div id="textarea"><?=$content->isi_content?></div>
+                    <textarea id="textarea" name="string3" class="required" rows="7" cols="40"><?=$content->isi_content?></textarea></p>
                     <div class="block-actions">
                         <ul class="actions-left">
                             <li><input type="reset" class="button red" id="reset-validate-form"  value="Reset"></li>
